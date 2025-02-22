@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Web App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome to My Telegram Web Page</h2>
+    <p id="user_info">Fetching user data...</p>
+    <button onclick="sendData()">Send Data to Bot</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();  // Fullscreen mode
+
+        document.getElementById("user_info").innerText = `Hello, ${tg.initDataUnsafe.user.first_name}!`;
+
+        function sendData() {
+            tg.sendData("User clicked the button!");  // Send data to bot
+            alert("Data sent to bot!");
+        }
+    </script>
+</body>
+</html>
